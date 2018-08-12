@@ -1,0 +1,19 @@
+{
+  "name": "passport-app",
+  "version": "1.0.0",
+  "description": "Simple passport auth app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agildav/passport-app.git"
+  },
+  "author": "Gil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agildav/passport-app/issues"
+  },
+  "homepage": "https://github.com/agildav/passport-app#readme"
+}
