@@ -44,6 +44,7 @@ router.post("/register", (req, res, next) => {
 
     User.registerUser(newUser, (err, user) => {
       if (err) throw err;
+      req.flash("success_msg", "You can login now");
       res.redirect("/login");
     });
   }

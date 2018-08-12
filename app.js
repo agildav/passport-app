@@ -5,6 +5,7 @@ const expressValidator = require("express-validator");
 const session = require("express-session");
 const passport = require("passport");
 const mongoose = require("mongoose");
+const flash = require("connect-flash");
 
 //  Init app
 const port = process.env.PORT || 3000;
@@ -45,9 +46,10 @@ app.use(
 );
 
 // Express messages
-app.use(require("connect-flash")());
+app.use(flash());
 app.use((req, res, next) => {
-  res.locals.messages = require("express-messages")(req, res);
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
   next();
 });
 

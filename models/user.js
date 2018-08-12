@@ -22,6 +22,7 @@ module.exports.registerUser = function(newUser, callback) {
       }
       //  Save in the DB
       newUser.password = hash;
+      //  TODO: handle repeated user
       User.create(newUser, callback);
     });
   });
