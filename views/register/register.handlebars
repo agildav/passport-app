@@ -1,0 +1,27 @@
+<form action="/register" method="post">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" placeholder="Pablo" required>
+  </div>
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" placeholder="Pablito" required>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="pablo@gmail.com" required>
+  </div>
+  <div>
+    <label for="name">Password</label>
+    <input type="password" name="password" id="password" required>
+  </div>
+  <div>
+    <label for="c_password">Confirm password</label>
+    <input type="password" name="c_password" id="c_password" required>
+  </div>
+  <button type="submit">Register!</button>
+  <br>
+  <p>Have an account?
+    <a href="/login">Login now!</a>
+  </p>
+</form>

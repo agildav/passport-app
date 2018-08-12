@@ -10,6 +10,13 @@ const mongoose = require("mongoose");
 const port = process.env.PORT || 3000;
 const app = express();
 
+//  Mongoose setup
+const mongoURL = "mongodb://localhost:27017/passport-app";
+mongoose.connect(
+  mongoURL,
+  { useNewUrlParser: true }
+);
+
 app.use(express.json());
 app.use(
   express.urlencoded({

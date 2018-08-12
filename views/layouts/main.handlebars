@@ -11,6 +11,13 @@
 </head>
 
 <body>
+  {{#if errors}} 
+    {{#each errors}}
+      <div class="alert alert-danger">
+        {{msg}}
+      </div>
+    {{/each}} 
+  {{/if}} 
   {{{body}}}
 </body>
 
