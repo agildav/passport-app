@@ -52,9 +52,13 @@ router.post("/register", (req, res, next) => {
     };
 
     User.registerUser(newUser, (err, user) => {
-      if (err) throw err;
-      req.flash("success_msg", "You can login now");
-      res.redirect("/login");
+      if (err) {
+        req.flash("error_msg", "User already exists");
+        res.redirect("/register");
+      } else {
+        req.flash("success_msg", "You can login now");
+        res.redirect("/login");
+      }
     });
   }
 });

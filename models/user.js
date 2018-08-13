@@ -6,11 +6,55 @@ const userSchema = mongoose.Schema({
   name: String,
   username: {
     type: String,
-    unique: true
+    required: true,
+    validate: {
+      isAsync: true,
+      validator: function(value, isValid) {
+        const self = this;
+        return self.constructor
+          .findOne({ username: value })
+          .exec(function(err, user) {
+            if (err) {
+              throw err;
+            } else if (user) {
+              if (self.id === user.id) {
+                // if finding and saving then it's valid even for existing username
+                return isValid(true);
+              }
+              return isValid(false);
+            } else {
+              return isValid(true);
+            }
+          });
+      },
+      message: "The username address is already taken!"
+    }
   },
   email: {
     type: String,
-    unique: true
+    required: true,
+    validate: {
+      isAsync: true,
+      validator: function(value, isValid) {
+        const self = this;
+        return self.constructor
+          .findOne({ email: value })
+          .exec(function(err, user) {
+            if (err) {
+              throw err;
+            } else if (user) {
+              if (self.id === user.id) {
+                // if finding and saving then it's valid even for existing email
+                return isValid(true);
+              }
+              return isValid(false);
+            } else {
+              return isValid(true);
+            }
+          });
+      },
+      message: "The email address is already taken!"
+    }
   },
   password: String
 });
@@ -18,18 +62,17 @@ const userSchema = mongoose.Schema({
 //  Compile schema into model and export it
 const User = (module.exports = mongoose.model("User", userSchema));
 
-//  registerUser method
 module.exports.registerUser = function(newUser, callback) {
   //  Encrypt the password
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(newUser.password, salt, (err, hash) => {
       if (err) {
         console.log(err);
+      } else {
+        //  Save in the DB
+        newUser.password = hash;
+        User.create(newUser, callback);
       }
-      //  Save in the DB
-      newUser.password = hash;
-      //  TODO: handle repeated user
-      User.create(newUser, callback);
     });
   });
 };
