@@ -8,19 +8,27 @@
   <meta name="theme-color" content="#000000">
   <title>Passport app</title>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 
 <body>
-  {{#if success_msg}}
-  <div class="alert alert-success">{{success_msg}}</div>
-  {{/if}} {{#if error_msg}}
-  <div class="alert alert-danger">{{error_msg}}</div>
-  {{/if}} {{#if error}}
-  <div class="alert alert-danger">{{error}}</div>
-  {{/if}} {{#if errors}} {{#each errors}}
-  <div class="alert alert-danger">{{msg}}</div>
-  {{/each}} {{/if}} 
-  {{{body}}}
+  <nav>
+
+  </nav>
+  
+  <div class="container">
+    {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}} {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}} {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{/if}} {{#if errors}} {{#each errors}}
+    <div class="alert alert-danger">{{msg}}</div>
+    {{/each}} {{/if}} {{{body}}}
+  </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
