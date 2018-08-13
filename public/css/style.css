@@ -1,0 +1,13 @@
+body {
+  font-size: large;
+}
+
+.navbar,
+.navbar-brand {
+  font-size: larger;
+  border-radius: 0;
+}
+
+form {
+  max-width: 50%;
+}
