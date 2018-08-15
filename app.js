@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 //  Mongoose setup
-const mongoURL = "mongodb://localhost:27017/passport-app";
+const mongoURL = process.env.mlab_uri;
 mongoose.connect(
   mongoURL,
   { useNewUrlParser: true }
